@@ -28,11 +28,7 @@ const FinalCTASection = () => {
             disabled={!videoFinished}
             onClick={() => document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth" })}
           >
-            {videoFinished ? "Quero Começar Agora →" : (
-              <span className="flex items-center gap-2">
-                <Lock className="h-4 w-4" /> Assista o vídeo primeiro
-              </span>
-            )}
+            Eu Quero!
           </Button>
           <p className="mt-4 font-body text-xs text-muted-foreground">
             Acesso imediato • Garantia de 7 dias • Pagamento seguro

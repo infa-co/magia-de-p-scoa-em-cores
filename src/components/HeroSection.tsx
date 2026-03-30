@@ -42,7 +42,7 @@ const HeroSection = () => {
               className={videoFinished ? "animate-pulse-soft" : ""}
               disabled={!videoFinished}
             >
-              {videoFinished ? "Quero Começar Agora →" : "🔒 Assista o vídeo primeiro"}
+              Eu Quero!
             </Button>
           </motion.div>
           <motion.div
