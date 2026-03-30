@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-easter.jpg";
+import { useVideo } from "@/contexts/VideoContext";
 
 const HeroSection = () => {
+  const { videoFinished } = useVideo();
+
   const scrollToCTA = () => {
     document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -32,8 +35,14 @@ const HeroSection = () => {
             <p className="mb-8 font-body text-base italic text-accent">
               ✨ Sem talento? Sem problema. Aqui você aprende do zero.
             </p>
-            <Button variant="cta" size="xl" onClick={scrollToCTA} className="animate-pulse-soft">
-              Quero Começar Agora →
+            <Button
+              variant="cta"
+              size="xl"
+              onClick={scrollToCTA}
+              className={videoFinished ? "animate-pulse-soft" : ""}
+              disabled={!videoFinished}
+            >
+              {videoFinished ? "Quero Começar Agora →" : "🔒 Assista o vídeo primeiro"}
             </Button>
           </motion.div>
           <motion.div

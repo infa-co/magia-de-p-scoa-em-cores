@@ -1,9 +1,30 @@
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useVideo } from "@/contexts/VideoContext";
 
 const VSLSection = () => {
   const [playing, setPlaying] = useState(false);
+  const { setVideoFinished } = useVideo();
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  // Listen for YouTube API messages to detect video end
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      try {
+        const data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+        // YouTube iframe API sends playerState 0 when video ends
+        if (data.event === "onStateChange" && data.info === 0) {
+          setVideoFinished(true);
+        }
+      } catch {
+        // ignore non-JSON messages
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, [setVideoFinished]);
 
   return (
     <section className="bg-background py-16 md:py-20">
@@ -40,8 +61,9 @@ const VSLSection = () => {
             </button>
           ) : (
             <iframe
+              ref={iframeRef}
               className="absolute inset-0 h-full w-full"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&enablejsapi=1"
               title="Pintura Encanta - VSL"
               allow="autoplay; encrypted-media"
               allowFullScreen
