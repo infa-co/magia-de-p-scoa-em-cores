@@ -40,18 +40,25 @@ const OfferSection = () => {
               </span>
             </div>
 
-            <Button
-              variant="cta"
-              size="xl"
-              className={`w-full ${videoFinished ? "animate-pulse-soft" : ""}`}
-              disabled={!videoFinished}
+            <a
+              href="https://hotmart.com/seu-link-aqui"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={!videoFinished ? "pointer-events-none" : ""}
             >
-              {videoFinished ? "Eu Quero! 🎨" : (
-                <span className="flex items-center gap-2">
-                  <Lock className="h-4 w-4" /> Assista o vídeo para liberar
-                </span>
-              )}
-            </Button>
+              <Button
+                variant="cta"
+                size="xl"
+                className={`w-full ${videoFinished ? "animate-pulse-soft" : ""}`}
+                disabled={!videoFinished}
+              >
+                {videoFinished ? "Eu Quero!" : (
+                  <span className="flex items-center gap-2">
+                    <Lock className="h-4 w-4" /> Assista o vídeo para liberar
+                  </span>
+                )}
+              </Button>
+            </a>
           </div>
 
           <div className="flex items-center justify-center gap-3 rounded-xl bg-background/60 px-6 py-4">

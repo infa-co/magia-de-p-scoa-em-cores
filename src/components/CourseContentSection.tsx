@@ -2,16 +2,17 @@ import { motion } from "framer-motion";
 import { CheckCircle2, Gift } from "lucide-react";
 
 const modules = [
-  { title: "Módulo 1 — Primeiros Passos", items: ["Materiais essenciais", "Preparação do pano", "Técnicas básicas de pinceladas"] },
-  { title: "Módulo 2 — Pintura Decorativa", items: ["Flores e folhagens", "Composição e harmonia", "Acabamento perfeito"] },
-  { title: "Módulo 3 — Projetos Práticos", items: ["Pano de prato decorado", "Toalhas personalizadas", "Peças para presente"] },
-  { title: "Módulo 4 — Vendendo suas Peças", items: ["Como precificar", "Fotos que vendem", "Onde e como divulgar"] },
+  { title: "Primeiros Passos", items: ["Materiais essenciais", "Preparação do pano", "Técnicas básicas de pinceladas"] },
+  { title: "Módulo 1 — Primeiro Pano", items: ["Passo a passo completo", "Técnicas de pinceladas", "Acabamento perfeito"] },
+  { title: "Módulo 2 — Segundo Pano", items: ["Novas técnicas", "Composição e harmonia", "Detalhes que encantam"] },
+  { title: "Módulo 3 — Terceiro Pano", items: ["Flores e folhagens", "Combinação de cores", "Efeitos especiais"] },
+  { title: "Módulo 4 — Quarto Pano", items: ["Peça completa avançada", "Toques finais profissionais", "Pronta para vender ou presentear"] },
 ];
 
 const bonuses = [
-  { title: "Bônus 1 — Kit de Moldes Exclusivos", description: "Mais de 30 moldes prontos para imprimir e usar nas suas pinturas." },
-  { title: "Bônus 2 — Guia de Combinação de Cores", description: "Paletas testadas e aprovadas para você nunca errar nas cores." },
-  { title: "Bônus 3 — Acesso ao Grupo VIP", description: "Comunidade exclusiva de alunas para trocar experiências e tirar dúvidas." },
+  { title: "Bônus 1", description: "Material extra exclusivo para acelerar seu aprendizado." },
+  { title: "Bônus 2", description: "Dicas e truques que só alunas do curso recebem." },
+  { title: "Bônus 3", description: "Acesso ao grupo VIP para trocar experiências e tirar dúvidas." },
 ];
 
 const CourseContentSection = () => (

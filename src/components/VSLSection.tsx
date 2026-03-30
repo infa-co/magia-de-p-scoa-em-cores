@@ -91,7 +91,7 @@ const VSLSection = () => {
             disabled={!videoFinished}
             onClick={() => document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth" })}
           >
-            {videoFinished ? "Eu Quero! 🎨" : (
+            {videoFinished ? "Eu Quero!" : (
               <span className="flex items-center gap-2">
                 <Lock className="h-4 w-4" /> Assista o vídeo para liberar
               </span>
