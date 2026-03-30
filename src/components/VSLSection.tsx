@@ -10,21 +10,6 @@ const VSLSection = () => {
   const { videoFinished, unlockProgress } = useVideo();
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  useEffect(() => {
-    const handleMessage = (event: MessageEvent) => {
-      try {
-        const data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
-        if (data.event === "onStateChange" && data.info === 0) {
-          setVideoFinished(true);
-        }
-      } catch {
-        // ignore non-JSON messages
-      }
-    };
-
-    window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
-  }, [setVideoFinished]);
 
   return (
     <section className="bg-background py-12 md:py-20">
