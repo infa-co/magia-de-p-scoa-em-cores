@@ -1,11 +1,17 @@
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Gift } from "lucide-react";
 
 const modules = [
-  { title: "Módulo 1 — Primeiros Passos", items: ["Materiais essenciais", "Preparação da superfície", "Técnicas básicas de pinceladas"] },
-  { title: "Módulo 2 — Pintura de Páscoa", items: ["Ovos decorativos", "Coelhinhos encantadores", "Flores e detalhes delicados"] },
-  { title: "Módulo 3 — Acabamento Profissional", items: ["Verniz e proteção", "Combinação de cores", "Detalhes que valorizam a peça"] },
+  { title: "Módulo 1 — Primeiros Passos", items: ["Materiais essenciais", "Preparação do pano", "Técnicas básicas de pinceladas"] },
+  { title: "Módulo 2 — Pintura Decorativa", items: ["Flores e folhagens", "Composição e harmonia", "Acabamento perfeito"] },
+  { title: "Módulo 3 — Projetos Práticos", items: ["Pano de prato decorado", "Toalhas personalizadas", "Peças para presente"] },
   { title: "Módulo 4 — Vendendo suas Peças", items: ["Como precificar", "Fotos que vendem", "Onde e como divulgar"] },
+];
+
+const bonuses = [
+  { title: "Bônus 1 — Kit de Moldes Exclusivos", description: "Mais de 30 moldes prontos para imprimir e usar nas suas pinturas." },
+  { title: "Bônus 2 — Guia de Combinação de Cores", description: "Paletas testadas e aprovadas para você nunca errar nas cores." },
+  { title: "Bônus 3 — Acesso ao Grupo VIP", description: "Comunidade exclusiva de alunas para trocar experiências e tirar dúvidas." },
 ];
 
 const CourseContentSection = () => (
@@ -17,13 +23,14 @@ const CourseContentSection = () => (
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        O que você vai aprender
+        O que você terá acesso
       </motion.h2>
       <p className="mb-12 text-center font-body text-muted-foreground">
         Um caminho completo do zero à sua primeira venda
       </p>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      {/* Módulos */}
+      <div className="mb-12 grid gap-6 md:grid-cols-2">
         {modules.map((m, i) => (
           <motion.div
             key={m.title}
@@ -42,6 +49,33 @@ const CourseContentSection = () => (
                 </li>
               ))}
             </ul>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Bônus */}
+      <motion.h3
+        className="mb-6 text-center font-display text-xl font-bold text-primary md:text-2xl"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+      >
+        🎁 E mais 3 Bônus Exclusivos
+      </motion.h3>
+
+      <div className="grid gap-4 md:grid-cols-3">
+        {bonuses.map((b, i) => (
+          <motion.div
+            key={b.title}
+            className="rounded-2xl border-2 border-primary/20 bg-background p-5 text-center shadow-card"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1 }}
+          >
+            <Gift className="mx-auto mb-3 h-8 w-8 text-primary" />
+            <h4 className="mb-2 font-display text-base font-semibold text-foreground">{b.title}</h4>
+            <p className="font-body text-sm text-muted-foreground">{b.description}</p>
           </motion.div>
         ))}
       </div>
