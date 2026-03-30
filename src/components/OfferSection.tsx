@@ -53,11 +53,7 @@ const OfferSection = () => {
                   className={`w-full ${videoFinished ? "animate-pulse-soft" : ""}`}
                   disabled={!videoFinished}
                 >
-                  {videoFinished ? "Eu Quero!" : (
-                    <span className="flex items-center gap-2">
-                      <Lock className="h-4 w-4" /> Assista o vídeo para liberar
-                    </span>
-                  )}
+                  Eu Quero!
                 </Button>
               </a>
               {!videoFinished && (
