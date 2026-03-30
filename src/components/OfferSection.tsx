@@ -4,7 +4,7 @@ import { Shield, Clock, Gift, Lock } from "lucide-react";
 import { useVideo } from "@/contexts/VideoContext";
 
 const OfferSection = () => {
-  const { videoFinished } = useVideo();
+  const { videoFinished, unlockProgress } = useVideo();
 
   return (
     <section id="oferta" className="bg-[image:var(--gradient-offer)] py-16 md:py-24">
@@ -40,25 +40,33 @@ const OfferSection = () => {
               </span>
             </div>
 
-            <a
-              href="https://hotmart.com/seu-link-aqui"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={!videoFinished ? "pointer-events-none" : ""}
-            >
-              <Button
-                variant="cta"
-                size="xl"
-                className={`w-full ${videoFinished ? "animate-pulse-soft" : ""}`}
-                disabled={!videoFinished}
+            <div className="relative w-full overflow-hidden rounded-xl">
+              <a
+                href="https://hotmart.com/seu-link-aqui"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={!videoFinished ? "pointer-events-none" : ""}
               >
-                {videoFinished ? "Eu Quero!" : (
-                  <span className="flex items-center gap-2">
-                    <Lock className="h-4 w-4" /> Assista o vídeo para liberar
-                  </span>
-                )}
-              </Button>
-            </a>
+                <Button
+                  variant="cta"
+                  size="xl"
+                  className={`w-full ${videoFinished ? "animate-pulse-soft" : ""}`}
+                  disabled={!videoFinished}
+                >
+                  {videoFinished ? "Eu Quero!" : (
+                    <span className="flex items-center gap-2">
+                      <Lock className="h-4 w-4" /> Assista o vídeo para liberar
+                    </span>
+                  )}
+                </Button>
+              </a>
+              {!videoFinished && (
+                <div
+                  className="absolute bottom-0 left-0 h-1 bg-primary transition-all duration-100"
+                  style={{ width: `${unlockProgress * 100}%` }}
+                />
+              )}
+            </div>
           </div>
 
           <div className="flex items-center justify-center gap-3 rounded-xl bg-background/60 px-6 py-4">
