@@ -4,7 +4,7 @@ import { Shield, Clock, Gift, Lock } from "lucide-react";
 import { useVideo } from "@/contexts/VideoContext";
 
 const OfferSection = () => {
-  const { videoFinished } = useVideo();
+  const { videoFinished, unlockProgress } = useVideo();
 
   return (
     <section id="oferta" className="bg-[image:var(--gradient-offer)] py-16 md:py-24">
