@@ -69,19 +69,27 @@ const VSLSection = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <Button
-            variant="cta"
-            size="xl"
-            className={`w-full max-w-md ${videoFinished ? "animate-pulse-soft" : ""}`}
-            disabled={!videoFinished}
-            onClick={() => document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            {videoFinished ? "Eu Quero!" : (
-              <span className="flex items-center gap-2">
-                <Lock className="h-4 w-4" /> Assista o vídeo para liberar
-              </span>
+          <div className="relative w-full max-w-md overflow-hidden rounded-xl">
+            <Button
+              variant="cta"
+              size="xl"
+              className={`w-full ${videoFinished ? "animate-pulse-soft" : ""}`}
+              disabled={!videoFinished}
+              onClick={() => document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth" })}
+            >
+              {videoFinished ? "Eu Quero!" : (
+                <span className="flex items-center gap-2">
+                  <Lock className="h-4 w-4" /> Assista o vídeo para liberar
+                </span>
+              )}
+            </Button>
+            {!videoFinished && (
+              <div
+                className="absolute bottom-0 left-0 h-1 bg-primary transition-all duration-100"
+                style={{ width: `${unlockProgress * 100}%` }}
+              />
             )}
-          </Button>
+          </div>
         </motion.div>
       </div>
     </section>
