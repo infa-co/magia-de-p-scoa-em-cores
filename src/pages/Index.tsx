@@ -1,5 +1,6 @@
 import { VideoProvider } from "@/contexts/VideoContext";
 import VSLSection from "@/components/VSLSection";
+import GallerySection from "@/components/GallerySection";
 import CourseContentSection from "@/components/CourseContentSection";
 import OfferSection from "@/components/OfferSection";
 
@@ -7,6 +8,7 @@ const Index = () => (
   <VideoProvider>
     <main>
       <VSLSection />
+      <GallerySection />
       <CourseContentSection />
       <OfferSection />
       <footer className="bg-card py-8 text-center font-body text-xs text-muted-foreground">
