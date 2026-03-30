@@ -7,7 +7,7 @@ import { Lock } from "lucide-react";
 
 const VSLSection = () => {
   const [playing, setPlaying] = useState(false);
-  const { videoFinished, setVideoFinished } = useVideo();
+  const { videoFinished, unlockProgress } = useVideo();
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
