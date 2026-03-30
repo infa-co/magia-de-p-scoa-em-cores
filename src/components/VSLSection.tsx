@@ -2,18 +2,18 @@ import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useVideo } from "@/contexts/VideoContext";
+import { Button } from "@/components/ui/button";
+import { Lock } from "lucide-react";
 
 const VSLSection = () => {
   const [playing, setPlaying] = useState(false);
-  const { setVideoFinished } = useVideo();
+  const { videoFinished, setVideoFinished } = useVideo();
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  // Listen for YouTube API messages to detect video end
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       try {
         const data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
-        // YouTube iframe API sends playerState 0 when video ends
         if (data.event === "onStateChange" && data.info === 0) {
           setVideoFinished(true);
         }
@@ -27,27 +27,34 @@ const VSLSection = () => {
   }, [setVideoFinished]);
 
   return (
-    <section className="bg-background py-16 md:py-20">
+    <section className="bg-background py-12 md:py-20">
       <div className="container mx-auto max-w-3xl px-4 text-center">
-        <motion.h2
-          className="mb-4 font-display text-2xl font-bold text-foreground md:text-3xl"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+        <motion.h1
+          className="mb-4 font-display text-3xl font-bold leading-tight text-foreground md:text-5xl"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          Assista e descubra como é simples
-        </motion.h2>
-        <p className="mb-8 font-body text-muted-foreground">
-          Em poucos minutos, você vai ver que pintar peças lindas está ao seu
-          alcance — mesmo começando do absoluto zero.
-        </p>
+          Descubra o segredo que está fazendo artesãs a pintarem{" "}
+          <span className="text-primary">panos pela primeira vez.</span>
+        </motion.h1>
+
+        <motion.p
+          className="mb-8 font-body text-base text-muted-foreground md:text-lg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          Assista agora e descubra o método que está fazendo milhares de artesãs
+          pintarem panos pela primeira vez.{" "}
+          <strong>Em menos de 30 dias suas pinturas vão dar um salto de qualidade.</strong>
+        </motion.p>
 
         <motion.div
           className="relative mx-auto aspect-video w-full overflow-hidden rounded-2xl bg-card shadow-soft"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
         >
           {!playing ? (
             <button
@@ -71,10 +78,26 @@ const VSLSection = () => {
           )}
         </motion.div>
 
-        <p className="mt-6 font-body text-sm text-muted-foreground">
-          🎨 Mais de <strong>2.000 alunas</strong> já transformaram suas vidas
-          com a pintura decorativa
-        </p>
+        <motion.div
+          className="mt-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          <Button
+            variant="cta"
+            size="xl"
+            className={`w-full max-w-md ${videoFinished ? "animate-pulse-soft" : ""}`}
+            disabled={!videoFinished}
+            onClick={() => document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth" })}
+          >
+            {videoFinished ? "Eu Quero! 🎨" : (
+              <span className="flex items-center gap-2">
+                <Lock className="h-4 w-4" /> Assista o vídeo para liberar
+              </span>
+            )}
+          </Button>
+        </motion.div>
       </div>
     </section>
   );
