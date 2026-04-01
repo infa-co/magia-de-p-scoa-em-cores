@@ -42,7 +42,7 @@ const OfferSection = () => {
 
             <div className="relative w-full overflow-hidden rounded-xl">
               <a
-                href="https://hotmart.com/seu-link-aqui"
+                href="https://pay.hotmart.com/Y104828781P?off=urs56f86&checkoutMode=10"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={!videoFinished ? "pointer-events-none" : ""}
