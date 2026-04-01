@@ -5,14 +5,14 @@ const modules = [
   { title: "Primeiros Passos", items: ["Materiais essenciais", "Preparação do pano", "Técnicas básicas de pinceladas"] },
   { title: "Módulo 1 — Primeiro Pano", items: ["Passo a passo completo", "Técnicas de pinceladas", "Acabamento perfeito"] },
   { title: "Módulo 2 — Segundo Pano", items: ["Novas técnicas", "Composição e harmonia", "Detalhes que encantam"] },
-  { title: "Módulo 3 — Terceiro Pano", items: ["Flores e folhagens", "Combinação de cores", "Efeitos especiais"] },
+  { title: "Módulo 3 — Terceiro Pano", items: ["Combinação de cores", "Efeitos especiais", "Detalhes que encantam"] },
   { title: "Módulo 4 — Quarto Pano", items: ["Peça completa avançada", "Toques finais profissionais", "Pronta para vender ou presentear"] },
 ];
 
 const bonuses = [
-  { title: "Bônus 1", description: "Material extra exclusivo para acelerar seu aprendizado." },
-  { title: "Bônus 2", description: "Dicas e truques que só alunas do curso recebem." },
-  { title: "Bônus 3", description: "Acesso ao grupo VIP para trocar experiências e tirar dúvidas." },
+  { title: "Bônus 1", description: "Comunidade no WhatsApp exclusiva" },
+  { title: "Bônus 2", description: "10 riscos extras" },
+  { title: "Bônus 3", description: "Guia de materiais escondidos" },
 ];
 
 const CourseContentSection = () => (
