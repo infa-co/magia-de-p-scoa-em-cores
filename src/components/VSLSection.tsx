@@ -55,7 +55,7 @@ const VSLSection = () => {
             <iframe
               ref={iframeRef}
               className="absolute inset-0 h-full w-full"
-              src="https://youtu.be/iFWIR9TAj3w?si=qM61obORj5R8yWeQ"
+              src="https://www.youtube.com/embed/iFWIR9TAj3w?autoplay=1&rel=0"
               title="Pintura Encanta - VSL"
               allow="autoplay; encrypted-media"
               allowFullScreen
